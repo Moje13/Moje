@@ -18,53 +18,49 @@
       --menu-underline-color: rgba(170, 170, 170, 0.8);
       --menu-underline-glow-color: rgba(255, 255, 255, 0.6);
     }
-
-    html, body {
-      margin: 0;
-      padding: 0;
+    body, html {
       height: 100%;
-      font-family: var(--brand-font);
-      color: var(--primary-text-color);
-      overflow-x: hidden;
-    }
-
-    body {
-      background: url('moje_socks_with_logo.jpg') no-repeat center center;
-      background-size: cover;
+      margin: 0;
+      background-image: url('moje_socks_with_logo.jpg');
+      background-repeat: no-repeat;
+      background-position: center center;
+      background-size: contain; /* keeps full image visible and well placed on desktop */
       position: relative;
+      color: var(--primary-text-color);
+      font-family: var(--brand-font);
+      overflow-x: hidden;
+      display: flex;
     }
-
     body::before {
       content: '';
       position: absolute;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
       background-color: rgba(0, 0, 0, 0.5);
       z-index: 0;
     }
-
     main.content {
-      position: relative;
-      z-index: 1;
+      flex: 1;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
+      padding-left: 20px;
+      box-sizing: border-box;
+      z-index: 5;
+      position: relative;
+      width: 100vw;
       text-align: center;
-      padding: 0 20px;
     }
-
     .brand-name {
       font-weight: 600;
       font-size: 6vw;
       margin: 0;
-      animation: brandFlashGlow var(--animation-duration-brand-glow) ease-out var(--animation-delay-brand) forwards;
+      color: var(--primary-text-color);
       text-shadow: 0 0 10px transparent;
+      animation: brandFlashGlow var(--animation-duration-brand-glow) ease-out var(--animation-delay-brand) forwards;
     }
-
     .tagline {
       font-weight: 400;
       font-size: 2vw;
@@ -74,33 +70,38 @@
       transform: translateY(20px);
       animation: fadeInUp 1s ease-out 1s forwards;
     }
-
     nav.menu {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      background-color: rgba(0, 0, 0, 0.3);
-      padding: 20px;
-      border-radius: 12px;
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: transparent;
+      padding: 60px 20px 20px 30px;
+      box-sizing: border-box;
       display: flex;
       flex-direction: column;
-      gap: 12px;
+      gap: 20px;
+      font-weight: 400;
+      font-size: 1.2rem;
+      opacity: 0;
       animation: slideInLeft 1s ease forwards;
       animation-delay: var(--animation-delay-menu);
-      z-index: 2;
+      z-index: 10;
     }
-
     nav.menu a {
       color: var(--secondary-text-color);
       text-decoration: none;
-      font-size: 1.1rem;
-      transition: 0.3s ease;
+      transition: color 0.3s ease, transform 0.3s ease, border-bottom-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      padding-bottom: 5px;
       border-bottom: 2px solid transparent;
-      padding-bottom: 3px;
+      display: block;
     }
-
     nav.menu a:hover {
       color: var(--menu-hover-color);
+      transform: scale(1.1);
       border-bottom-color: var(--menu-underline-color);
       box-shadow: 0 4px 8px -4px var(--menu-underline-glow-color);
     }
@@ -110,56 +111,7 @@
       50% { text-shadow: 0 0 15px var(--brand-glow-color), 0 0 30px var(--brand-glow-color); }
       100% { text-shadow: 0 0 0px transparent; }
     }
-
     @keyframes fadeInUp {
       to { opacity: 1; transform: translateY(0); }
     }
-
-    @keyframes slideInLeft {
-      to { opacity: 1; }
-    }
-
-    @media (max-width: 700px) {
-      .brand-name {
-        font-size: 3rem;
-      }
-
-      .tagline {
-        font-size: 1.3rem;
-      }
-
-      nav.menu {
-        top: auto;
-        bottom: 20px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 90%;
-        flex-wrap: wrap;
-        flex-direction: row;
-        justify-content: center;
-        background-color: rgba(0, 0, 0, 0.5);
-      }
-
-      nav.menu a {
-        font-size: 0.9rem;
-        padding: 6px;
-      }
-    }
-  </style>
-</head>
-<body>
-  <nav class="menu">
-    <a href="#mens-socks">Men's Socks</a>
-    <a href="#womens-socks">Women's Socks</a>
-    <a href="#kids-socks">Kids Socks</a>
-    <a href="#couple-socks">Couple Socks</a>
-    <a href="#designer-socks">Designer Socks</a>
-    <a href="#about">About</a>
-    <a href="#contact">Contact Us</a>
-  </nav>
-  <main class="content">
-    <h1 class="brand-name">Mojè</h1>
-    <p class="tagline">because they deserve a place!</p>
-  </main>
-</body>
-</html>
+    @ke
