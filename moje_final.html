@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mojè — because they deserve a place!</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --primary-text-color: #fff;
+      --secondary-text-color: #eee;
+      --menu-hover-color: #fff;
+      --brand-font: 'Poppins', sans-serif;
+      --animation-duration-brand-glow: 2s;
+      --animation-delay-brand: 0.5s;
+      --animation-delay-menu: 6s;
+      --brand-glow-color: rgba(255, 255, 255, 1);
+      --menu-underline-color: rgba(170, 170, 170, 0.8);
+      --menu-underline-glow-color: rgba(255, 255, 255, 0.6);
+    }
+    body, html {
+      height: 100%;
+      margin: 0;
+      background-image: url('moje_socks_with_logo.jpg');
+      background-size: cover;
+      background-position: center;
+      background-attachment: fixed;
+      position: relative;
+      color: var(--primary-text-color);
+      font-family: var(--brand-font);
+      overflow-x: hidden;
+      display: flex;
+    }
+    body::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 0;
+    }
+    main.content {
+      flex: 1;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-left: 20px;
+      box-sizing: border-box;
+      z-index: 5;
+      position: relative;
+      width: 100vw;
+      text-align: center;
+    }
+    .brand-name {
+      font-weight: 600;
+      font-size: 6vw;
+      margin: 0;
+      color: var(--primary-text-color);
+      text-shadow: 0 0 10px transparent;
+      animation: brandFlashGlow var(--animation-duration-brand-glow) ease-out var(--animation-delay-brand) forwards;
+    }
+    .tagline {
+      font-weight: 400;
+      font-size: 2vw;
+      color: var(--secondary-text-color);
+      margin-top: 10px;
+      opacity: 0;
+      transform: translateY(20px);
+      animation: fadeInUp 1s ease-out 1s forwards;
+    }
+    nav.menu {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: transparent;
+      padding: 60px 20px 20px 30px;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      font-weight: 400;
+      font-size: 1.2rem;
+      opacity: 0;
+      animation: slideInLeft 1s ease forwards;
+      animation-delay: var(--animation-delay-menu);
+      z-index: 10;
+    }
+    nav.menu a {
+      color: var(--secondary-text-color);
+      text-decoration: none;
+      transition: color 0.3s ease, transform 0.3s ease, border-bottom-color 0.3s ease, box-shadow 0.3s ease;
+      cursor: pointer;
+      letter-spacing: 0.05em;
+      padding-bottom: 5px;
+      border-bottom: 2px solid transparent;
+      display: block;
+    }
+    nav.menu a:hover {
+      color: var(--menu-hover-color);
+      transform: scale(1.1);
+      border-bottom-color: var(--menu-underline-color);
+      box-shadow: 0 4px 8px -4px var(--menu-underline-glow-color);
+    }
+    @keyframes brandFlashGlow {
+      0% { text-shadow: 0 0 0px transparent; }
+      50% { text-shadow: 0 0 15px var(--brand-glow-color), 0 0 30px var(--brand-glow-color); }
+      100% { text-shadow: 0 0 0px transparent; }
+    }
+    @keyframes fadeInUp {
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes slideInLeft {
+      to { left: 0; opacity: 1; }
+    }
+    @media (max-width: 700px) {
+      nav.menu { width: 200px; padding-left: 20px; }
+      .brand-name { font-size: 3.5rem; }
+      .tagline { font-size: 1.4rem; }
+    }
+  </style>
+</head>
+<body>
+  <nav class="menu">
+    <a href="#mens-socks">Men's Socks</a>
+    <a href="#womens-socks">Women's Socks</a>
+    <a href="#kids-socks">Kids Socks</a>
+    <a href="#couple-socks">Couple Socks</a>
+    <a href="#designer-socks">Designer Socks</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact Us</a>
+  </nav>
+  <main class="content">
+    <h1 class="brand-name">Mojè</h1>
+    <p class="tagline">because they deserve a place!</p>
+  </main>
+</body>
+</html>
